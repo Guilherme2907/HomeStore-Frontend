@@ -1,25 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Container, Row } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Router } from "react-router-dom";
+
+import Sidebar from "./Components/Sidebar/Sidebar";
+import TopBar from "./Components/TopBar/TopBar";
+import Header from "./Components/Header/Header";
+import GlobalStyles from "./styles/global";
+import Footer from "./Components/Footer/Footer";
+import Content from "./Components/Content/Content";
+import history from "./services/history";
+import { ProductProvider } from "./store/ProductContext";
+import Routes from "./routes/routes";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router history={history}>
+      <ProductProvider history={history}>
+        <Container>
+          <TopBar />
+          <Header />
+          <Row>
+            <Sidebar />
+            <Content>
+              <Routes />
+            </Content>
+          </Row>
+          <Footer />
+        </Container>
+        <GlobalStyles />
+      </ProductProvider>
+    </Router>
   );
 }
 
