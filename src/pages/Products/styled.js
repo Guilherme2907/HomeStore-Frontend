@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const ProductWrapper = styled.div`
-  @import url("https://fonts.googleapis.com/css?family=Anton&display=swap");
   margin-bottom: 20px;
   div.product-grid {
     display: flex;

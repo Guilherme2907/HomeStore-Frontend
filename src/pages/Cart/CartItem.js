@@ -1,39 +1,41 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
+import image from "../../assets/product-1.png";
 
-// import { Container } from './styles';
+import { CartItemWrapper } from "./styled";
 
 export default function Cart({ product }) {
   return (
-    <Row>
-      <Col xs={12} md={6}>
-        <Row>
-          <Col xs={12} md={6}>
-            Image
-          </Col>
-          <Col xs={12} md={6}>
-            <p>{product.nome}</p>
-            <button>Remover</button>
-          </Col>
-        </Row>
-      </Col>
-
-      <Col xs={12} md={6}>
-        <Row>
-          <Col xs={12} md={4}>
-            <h5>Preço</h5>
-            <p>{`R$ ${product.preco}`}</p>
-          </Col>
-          <Col xs={12} md={4}>
-            <h5>Quantidade</h5>
-            <p>{product.quantity}</p>
-          </Col>
-          <Col xs={12} md={4}>
-            <h5>Total</h5>
-            <p>{`R$ ${product.total}`}</p>
-          </Col>
-        </Row>
-      </Col>
-    </Row>
+    <CartItemWrapper>
+      <Row className="cart-item-row">
+        <Col xs={12} md={2}>
+          <img src={image} alt="product" style={{ width: "100%" }} />
+        </Col>
+        <Col xs={12} md={2}>
+          <span className="d-md-none">Nome do Produto</span>
+          {product.nome}
+        </Col>
+        <Col xs={12} md={2}>
+          <span className="d-md-none">Preço</span>
+          {`R$ ${product.preco}`}
+        </Col>
+        <Col xs={12} md={2} className="quantity-column">
+          <span className="d-md-none">Quantidade</span>
+          <div className="counter">
+            <span>-</span>
+            <span>{product.quantity}</span>
+            <span>+</span>
+          </div>
+        </Col>
+        <Col xs={12} md={2}>
+          <span className="d-md-none">Remover</span>
+          <i className="fas fa-trash"></i>
+        </Col>
+        <Col xs={12} md={2}>
+          <span className="d-md-none">Total</span>
+          {`R$ ${product.total}`}
+        </Col>
+      </Row>
+    </CartItemWrapper>
   );
 }
